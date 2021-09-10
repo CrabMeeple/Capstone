@@ -378,6 +378,12 @@ app.post('/api/groups/:id/members', urlencodedParser, function (req, res) {
         return
     }
 
+    if (match.Members.length == match.MaxGroupSize) {
+        res.status(409).send('Member not added - group at capacity')
+        console.log('Member not added - group at capacity')
+        return
+    }
+
     // add the member
     match.Members.push(member)
 
