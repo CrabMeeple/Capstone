@@ -1,0 +1,21 @@
+[
+    {
+        "RaceId": 1,
+        "TrackName": "Track One",
+        "SponsorName": "Natalie Rachelle",
+        "SponsorPhone": "555-000-0000",
+        "SponsorEmail": "nat214@gmail.com",
+        "MaxGroupSize": 6,
+        "Members": [
+            {
+                "MemberId": 1,
+                "MemberEmail": "test@thetest.com",
+                "HorseName": "Taken Not Stirred",
+                "JockeyName": "Liam Neeson",
+                "Odds": "8-1",
+                "HorseColor": "Blue",
+                "MemberPhone": "555-000-0002"
+            }
+        ]
+    }
+]
