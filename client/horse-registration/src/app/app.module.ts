@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TracksComponent } from './tracks/tracks.component';
+import { RacesComponent } from './races/races.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TracksComponent } from './tracks/tracks.component';
     MainComponent,
     HeaderComponent,
     FooterComponent,
-    TracksComponent
+    TracksComponent,
+    RacesComponent
   ],
   imports: [
     CommonModule,

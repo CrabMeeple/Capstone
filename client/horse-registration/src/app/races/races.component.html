@@ -1,0 +1,4 @@
+<select name="races" id="races">
+    <option value="Select">Select</option>
+    <option *ngFor="let race of allRaces" value="{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
+</select>
