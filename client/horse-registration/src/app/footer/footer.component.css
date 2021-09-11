@@ -5,6 +5,12 @@ footer {
     position: absolute;
 }
 
+@media(max-width:950px) {
+    footer {
+        flex: 0;
+    }
+}
+
 footer > * {
     padding: 0 1em;
 }
