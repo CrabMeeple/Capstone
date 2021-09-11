@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Track } from '../models/track';
 import { TracksService } from '../services/tracks.service';
 
@@ -13,13 +14,19 @@ export class TracksComponent implements OnInit {
 
   allTracks;
   errorMessage: string;
+  trackSubscription: Subscription;
 
   ngOnInit(): void {
     this.getTracks();
   }
 
+  ngOnDestroy(): void {
+    console.log("Destruction");
+    this.trackSubscription.unsubscribe();
+  }
+
   getTracks() {
-    this.tracksService.getTracks().subscribe((tracks:any) => {
+    this.trackSubscription = this.tracksService.getTracks().subscribe((tracks:any) => {
       this.allTracks = tracks;
     },
     err => {

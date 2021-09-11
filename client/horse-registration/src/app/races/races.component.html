@@ -1,4 +1,23 @@
-<select name="races" id="races">
-    <option value="Select">Select</option>
-    <option *ngFor="let race of allRaces" value="{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
+<select  name="races" id="races" [(ngModel)]="selectedRace">
+    <option value="ViewAll">View All</option>
+    <option *ngFor="let race of allRaces" [ngValue]="race">Race {{this.race.RaceId}}</option>
 </select>
+{{selectedRace | json}}
+<!-- <table *ngIf="!this.viewAll">
+    <tr>
+        <th>Horse Number</th>
+        <th>Horse Name</th>
+        <th>Odds</th>
+        <th>Jockey Name</th>
+        <th>Contact Phone</th>
+        <th>Contact Email</th>
+    </tr>
+    <tr *ngFor="let horse of this.selectedRace.Members">
+        <td>{{ horse.HorseColor }}</td>
+        <td>{{ horse.HorseName }}</td>
+        <td>{{ horse.Odds }}</td>
+        <td>{{ horse.JockeyName }}</td>
+        <td>{{ horse.MemberPhone }}</td>
+        <td>{{ horse.MemberEmail }}</td>
+    </tr>
+</table> -->

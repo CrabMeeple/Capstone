@@ -15,6 +15,8 @@ export class RacesComponent implements OnInit {
   currentTrack: Track;
   errorMessage: string;
   allRaces: Race[];
+  selectedRace: Race;
+  viewAll: boolean = true;
 
   ngOnInit(): void {
     this.getRaces();
@@ -28,6 +30,24 @@ export class RacesComponent implements OnInit {
     err => {
       this.errorMessage = err;
     });
+  }
+
+  viewAllRaces(): void {
+    console.log("View All");
+    this.viewAll = true;
+  }
+
+  selectRace(race): void {
+    console.log("Hello");
+    this.selectedRace = race;
+    this.viewAll = false; 
+    console.log(`viewAll ${this.viewAll}`);
+  }
+  selectRace2(race): void {
+    console.log(race);
+  }
+  selectRace3(race):void {
+    console.log(race);
   }
 
 }
