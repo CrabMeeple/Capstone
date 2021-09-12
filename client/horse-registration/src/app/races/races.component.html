@@ -1,23 +1,37 @@
-<select  name="races" id="races" [(ngModel)]="selectedRace">
+<select  name="races" id="races" [(ngModel)]="selectedRace" (change)="isViewAll($event.target.value)">
     <option value="ViewAll">View All</option>
-    <option *ngFor="let race of allRaces" [ngValue]="race">Race {{this.race.RaceId}}</option>
+    <option *ngFor="let race of allRaces" [ngValue]="race" value="Race{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
 </select>
-{{selectedRace | json}}
-<!-- <table *ngIf="!this.viewAll">
-    <tr>
-        <th>Horse Number</th>
-        <th>Horse Name</th>
-        <th>Odds</th>
-        <th>Jockey Name</th>
-        <th>Contact Phone</th>
-        <th>Contact Email</th>
-    </tr>
-    <tr *ngFor="let horse of this.selectedRace.Members">
-        <td>{{ horse.HorseColor }}</td>
-        <td>{{ horse.HorseName }}</td>
-        <td>{{ horse.Odds }}</td>
-        <td>{{ horse.JockeyName }}</td>
-        <td>{{ horse.MemberPhone }}</td>
-        <td>{{ horse.MemberEmail }}</td>
-    </tr>
-</table> -->
+<button>Add Race</button>
+<div *ngIf="!this.viewAll">
+    <table>
+        <tr>
+            <th>Horse Number</th>
+            <th>Horse Name</th>
+            <th>Odds</th>
+            <th>Jockey Name</th>
+            <th>Contact Phone</th>
+            <th>Contact Email</th>
+        </tr>
+        <tr *ngFor="let horse of this.selectedRace.Members">
+            <td>{{ horse.HorseColor }}</td>
+            <td>{{ horse.HorseName }}</td>
+            <td>{{ horse.Odds }}</td>
+            <td>{{ horse.JockeyName }}</td>
+            <td>{{ horse.MemberPhone }}</td>
+            <td>{{ horse.MemberEmail }}</td>
+            <td>
+                <button>Edit</button>
+            </td>
+            <td>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </table>
+    <p>Max Entrants: {{this.selectedRace.MaxGroupSize}}</p>
+    <p>Sponsor Name: {{this.selectedRace.SponsorName}}</p>
+    <p>Sponsor Email: {{this.selectedRace.SponsorEmail}}</p>
+    <p>Sponsor Phone: {{this.selectedRace.SponsorPhone}}</p>
+    <button>Edit</button>
+    <button>Delete Race</button>
+</div>

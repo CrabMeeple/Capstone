@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TracksComponent } from './tracks/tracks.component';
 import { RacesComponent } from './races/races.component';
+import { HorseFormComponent } from './horse-form/horse-form.component';
+import { RaceFormComponent } from './race-form/race-form.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { RacesComponent } from './races/races.component';
     HeaderComponent,
     FooterComponent,
     TracksComponent,
-    RacesComponent
+    RacesComponent,
+    HorseFormComponent,
+    RaceFormComponent
   ],
   imports: [
     CommonModule,

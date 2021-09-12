@@ -37,17 +37,8 @@ export class RacesComponent implements OnInit {
     this.viewAll = true;
   }
 
-  selectRace(race): void {
-    console.log("Hello");
-    this.selectedRace = race;
-    this.viewAll = false; 
-    console.log(`viewAll ${this.viewAll}`);
+  isViewAll(value) {
+    this.viewAll = ("ViewAll" === value);
+    console.log(this.viewAll);
   }
-  selectRace2(race): void {
-    console.log(race);
-  }
-  selectRace3(race):void {
-    console.log(race);
-  }
-
 }

@@ -15,6 +15,24 @@
                 "Odds": "8-1",
                 "HorseColor": "Blue",
                 "MemberPhone": "555-000-0002"
+            },
+            {
+                "MemberId": 7,
+                "MemberEmail": "t@t.com",
+                "HorseName": "Test Name",
+                "JockeyName": "Test Jockey",
+                "Odds": "7-2",
+                "HorseColor": "blue",
+                "MemberPhone": "2222222222"
+            },
+            {
+                "MemberId": 8,
+                "MemberEmail": "t@t.com",
+                "HorseName": "Horse Name",
+                "JockeyName": "Jockey Name",
+                "Odds": "5-1",
+                "HorseColor": "blue",
+                "MemberPhone": "2222222222"
             }
         ]
     },
@@ -34,6 +52,15 @@
                 "Odds": "8-13",
                 "HorseColor": "Blue3",
                 "MemberPhone": "555-000-00023"
+            },
+            {
+                "MemberId": 4,
+                "MemberEmail": "test@thetest.com4",
+                "HorseName": "Taken Not Stirred4",
+                "JockeyName": "Liam Neeson4",
+                "Odds": "8-14",
+                "HorseColor": "Blue4",
+                "MemberPhone": "555-000-00024"
             }
         ]
     },

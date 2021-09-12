@@ -1,0 +1,18 @@
+<form [formGroup]="horseForm" (ngSubmit)="onSubmit(horseForm.value)">
+    <label for="HorseName">Horse Name</label>
+    <input type="text" id="horseName" formControlName="HorseName">
+    <label for="JockeyName">Jockey Name</label>
+    <input type="text" id="jockeyName" formControlName="JockeyName">
+    <label for="Odds">Odds</label>
+    <input type="text" id="odds" formControlName="Odds">
+    <label for="Color">Number/Color</label>
+    <select name="color" id="color" formControlName="HorseColor">
+        <option value="blue">Blue</option>
+    </select>
+    <label for="contactEmail">Contact Email</label>
+    <input type="email" id="contactEmail" formControlName="MemberEmail">
+    <label for="contactPhone">Contact Phone</label>
+    <input type="tel" id="contactPhone" formControlName="MemberPhone">
+    <input type="submit" id="register-horse" value="Save Horse">
+</form>
+
