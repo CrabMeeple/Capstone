@@ -1,7 +1,7 @@
 [
     {
         "RaceId": 1,
-        "TrackName": "Track One",
+        "TrackName": "Oaklawn Park",
         "SponsorName": "Natalie Rachelle",
         "SponsorPhone": "555-000-0000",
         "SponsorEmail": "nat214@gmail.com",
@@ -38,7 +38,7 @@
     },
     {
         "RaceId": 3,
-        "TrackName": "Track One",
+        "TrackName": "Turfway Park",
         "SponsorName": "Natalie Rachelle3",
         "SponsorPhone": "555-000-00003",
         "SponsorEmail": "nat214@gmail.com",
@@ -66,7 +66,7 @@
     },
     {
         "RaceId": 2,
-        "TrackName": "Track Two",
+        "TrackName": "Del Mar",
         "SponsorName": "Natalie Rachelle2",
         "SponsorPhone": "555-000-0000",
         "SponsorEmail": "nat214@gmail.com",
@@ -80,6 +80,24 @@
                 "Odds": "8-12",
                 "HorseColor": "Blue2",
                 "MemberPhone": "555-000-00022"
+            },
+            {
+                "MemberId": 9,
+                "MemberEmail": "ty@cl.com",
+                "HorseName": "Tom ",
+                "JockeyName": "Brady",
+                "Odds": "9-2",
+                "HorseColor": "colorPair[1].color",
+                "MemberPhone": "2222222222"
+            },
+            {
+                "MemberId": 10,
+                "MemberEmail": "t@t.com",
+                "HorseName": "Flat Tire",
+                "JockeyName": "Geico",
+                "Odds": "5-3",
+                "HorseColor": "Purple",
+                "MemberPhone": "2222222222"
             }
         ]
     }

@@ -41,4 +41,8 @@ export class RacesComponent implements OnInit {
     this.viewAll = ("ViewAll" === value);
     console.log(this.viewAll);
   }
+
+  addHorse(race: Race) {
+    this.racesService.sendSelectedRace(race);
+  }
 }

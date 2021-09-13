@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Race } from '../models/race';
 
 @Injectable({
@@ -12,16 +12,28 @@ export class RacesService {
     
   //TODO: Store urls in single file (Dynamic for environments/ doesn't always run on localhost)
   raceApiUrl = 'http://localhost:8082/api/groups';
+  private subject = new Subject<any>()
   jsonContentTypeHeaders = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
   };
 
   allRaces;
+  data = new BehaviorSubject<Race>({} as any);
+  currentData = this.data.asObservable();
 
   getRaces() : Observable<Race> {
     const results : Observable<Race> = this.http.get<Race>(this.raceApiUrl);
     console.log(`returned ${results}`);
     return results; 
+  }
+
+  sendSelectedRace(data): void {
+    console.log(data);
+    this.data.next(data);
+  }
+
+  getSelectedRace(): Observable<any> {
+    return this.subject.asObservable();
   }
 
 }

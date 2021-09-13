@@ -6,8 +6,8 @@
     <label for="Odds">Odds</label>
     <input type="text" id="odds" formControlName="Odds">
     <label for="Color">Number/Color</label>
-    <select name="color" id="color" formControlName="HorseColor">
-        <option value="blue">Blue</option>
+    <select name="color" id="color" formControlName="HorseColor" >
+        <option *ngFor="let colorPair of mappedColor" value={{colorPair[1].color}}>{{colorPair[1].color}}/{{colorPair[1].num}}</option>
     </select>
     <label for="contactEmail">Contact Email</label>
     <input type="email" id="contactEmail" formControlName="MemberEmail">

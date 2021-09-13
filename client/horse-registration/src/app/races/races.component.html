@@ -2,7 +2,9 @@
     <option value="ViewAll">View All</option>
     <option *ngFor="let race of allRaces" [ngValue]="race" value="Race{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
 </select>
-<button>Add Race</button>
+<!-- <a routerLink="addEntrant" (click)="addRace(this.)">
+    <input type="button" value="Add Race">
+</a> -->
 <div *ngIf="!this.viewAll">
     <table>
         <tr>
@@ -28,6 +30,9 @@
             </td>
         </tr>
     </table>
+    <a routerLink="addEntrant" (click)="addHorse(this.selectedRace)">
+        <input type="button" value="Add Horse">
+    </a>
     <p>Max Entrants: {{this.selectedRace.MaxGroupSize}}</p>
     <p>Sponsor Name: {{this.selectedRace.SponsorName}}</p>
     <p>Sponsor Email: {{this.selectedRace.SponsorEmail}}</p>
