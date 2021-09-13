@@ -1,16 +1,20 @@
 <main class="Site-content">
     <figure>
       <a routerLink="races" (click)="navigateToRaces(this.oaklawn)">
-         <img src="assets/images/Oaklawn.jpg" width="300" height="200" alt="" class="picture-link">
+         <img src="assets/images/Oaklawn.jpg" width="300" height="200" alt="Oaklawn" class="picture-link">
       </a>
-       <figcaption>Oaklawn</figcaption>
+       <figcaption>{{this.oaklawn?.TrackName}}</figcaption>
     </figure>
     <figure>
-       <img src="assets/images/Turfway Park.jpg" width="300" height="200" alt="" class="picture-link">
-       <figcaption>Turfway Park</figcaption>
+      <a routerLink="races" (click)="navigateToRaces(this.turfway)">
+         <img src="assets/images/Turfway Park.jpg" width="300" height="200" alt="Turfway" class="picture-link">
+      </a>
+       <figcaption>{{this.turfway?.TrackName}}</figcaption>
     </figure>
     <figure>
-       <img src="assets/images/Del Mar.jpg" width="300" height="200" alt="" class="picture-link">
-       <figcaption>Del Mar</figcaption>
-    </figure>
+      <a routerLink="races" (click)="navigateToRaces(this.delMar)">
+         <img src="assets/images/Del Mar.jpg" width="300" height="200" alt="Del Mar" class="picture-link">
+      </a>
+      <figcaption>{{this.delMar?.TrackName}}</figcaption>
+   </figure>
 </main>

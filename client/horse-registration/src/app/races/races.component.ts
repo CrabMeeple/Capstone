@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Race } from '../models/race';
 import { Track } from '../models/track';
+import { HorsesService } from '../services/horses.service';
 import { RacesService } from '../services/races.service';
 import { TracksService } from '../services/tracks.service';
 
 @Component({
   selector: 'hr-races',
   templateUrl: './races.component.html',
-  styleUrls: ['./races.component.css']
+  styleUrls: ['./races.component.css'],
+  
 })
-export class RacesComponent implements OnInit {
+export class RacesComponent implements OnInit, OnDestroy {
 
-  constructor(private racesService: RacesService, private tracksService: TracksService) { }
+  constructor(private racesService: RacesService, private tracksService: TracksService, private horsesServices: HorsesService) { }
 
   currentTrack: Track;
   errorMessage: string;
@@ -20,6 +22,7 @@ export class RacesComponent implements OnInit {
   selectedRace: Race;
   viewAll: boolean = true;
   trackServiceSubscription: Subscription;
+  race: Race;
 
   ngOnInit(): void {
    // this.getRaces();
@@ -60,5 +63,20 @@ export class RacesComponent implements OnInit {
 
   addHorse(race: Race) {
     this.racesService.sendSelectedRace(race);
+  }
+
+  ngOnDestroy() {
+    this.trackServiceSubscription.unsubscribe();
+  }
+
+  deleteHorse(groupId: number, horseId: number) {
+    //this.horsesServices.deleteHorse(groupId, horseId).subscribe(horse => this.getRaces(this.currentTrack.TrackId));
+    this.horsesServices.deleteHorse(groupId, horseId).subscribe();
+    this.selectedRace.Members = this.selectedRace.Members.filter(obj => obj.MemberId !== horseId);
+    this.setRace();
+  }
+
+  setRace() {
+    this.selectedRace = this.allRaces[0];
   }
 }

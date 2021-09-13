@@ -19,4 +19,9 @@ export class HorsesService {
     const results: Observable<Member> = this.http.post<Member>(`${this.horseApiUrl}/${raceId}/members`, horse, this.jsonContentTypeHeaders);
     return results;
   }
+
+  deleteHorse(groupId: number, horseId: number) : Observable<Member> {
+    const results: Observable<Member> = this.http.delete<Member>(`${this.horseApiUrl}/${groupId}/members/${horseId}`);
+    return results;
+  }
 }
