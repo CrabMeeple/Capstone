@@ -31,8 +31,10 @@ export class TracksComponent implements OnInit {
   getTracks() {
     this.trackSubscription = this.tracksService.getTracks().subscribe((tracks:any) => {
       this.allTracks = tracks;
+      console.log('All tracks');
+      console.log(this.allTracks);
       for(let track of this.allTracks) {
-        switch(track.trackId) {
+        switch(track.TrackId) {
           case "Oak":
             this.oaklawn = track;
             break;
@@ -44,6 +46,7 @@ export class TracksComponent implements OnInit {
             break;
         }
       }
+
       console.log(this.turfway);
     },
     err => {

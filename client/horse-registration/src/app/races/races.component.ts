@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Race } from '../models/race';
 import { Track } from '../models/track';
 import { RacesService } from '../services/races.service';
+import { TracksService } from '../services/tracks.service';
 
 @Component({
   selector: 'hr-races',
@@ -10,20 +12,34 @@ import { RacesService } from '../services/races.service';
 })
 export class RacesComponent implements OnInit {
 
-  constructor(private racesService: RacesService) { }
+  constructor(private racesService: RacesService, private tracksService: TracksService) { }
 
   currentTrack: Track;
   errorMessage: string;
   allRaces: Race[];
   selectedRace: Race;
   viewAll: boolean = true;
+  trackServiceSubscription: Subscription;
 
   ngOnInit(): void {
-    this.getRaces();
+   // this.getRaces();
+    this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
+      this.currentTrack = track;
+      console.log('current Track');
+      console.log(this.currentTrack);
+      this.getRaces(this.currentTrack.TrackId);
+    });
   }
 
-  getRaces(): void {
-    this.racesService.getRaces().subscribe((races:any) => {
+  getRaces(trackId : string): void {
+    // this.racesService.getRaces().subscribe((races:any) => {
+    //   this.allRaces = races;
+    //   this.allRaces.sort((a,b) => a.RaceId - b.RaceId);
+    // },
+    // err => {
+    //   this.errorMessage = err;
+    // });
+    this.racesService.getRacesByTrack(trackId).subscribe((races:any) => {
       this.allRaces = races;
       this.allRaces.sort((a,b) => a.RaceId - b.RaceId);
     },

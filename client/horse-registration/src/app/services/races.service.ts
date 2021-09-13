@@ -35,5 +35,10 @@ export class RacesService {
   getSelectedRace(): Observable<any> {
     return this.subject.asObservable();
   }
+  
+  getRacesByTrack(organizationId: string): Observable<Race> {
+    const results : Observable<Race> = this.http.get<Race>(`${this.raceApiUrl}/byorganization/${organizationId}`);
+    return results;
+  }
 
 }

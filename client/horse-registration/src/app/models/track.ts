@@ -1,5 +1,5 @@
 export interface Track {
-    TrackName: String;
-    TrackId: String;
-    Description: String;
+    TrackName: string;
+    TrackId: string;
+    Description: string;
 }
