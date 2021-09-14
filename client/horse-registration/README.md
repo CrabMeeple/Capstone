@@ -13,31 +13,31 @@ Run `node server.js` in the capstone-project\server in order to run the backend 
 Navigate to http://localhost:4200
 
 ## API Endpoints
-Get Endpoints
--Get Race By Id: localhost:8082/api/groups/:id
--Get All Tracks: localhost:8082/api/organizations
--Get Many Groups By Organization: localhost:8082/api/groups/byorganization/:id
--Get All Races: localhost:8082/api/groups/
--Get a Specific Horse in a Specific Race: localhost:8082/api/groups/:groupid/members/:memberid
--Get All Organizations: localhost:8082/api/organizations
+*Get Endpoints
+    *Get Race By Id: localhost:8082/api/groups/:id
+    *Get All Tracks: localhost:8082/api/organizations
+    *Get Many Groups By Organization: localhost:8082/api/groups/byorganization/:id
+    *Get All Races: localhost:8082/api/groups/
+    *Get a Specific Horse in a Specific Race: localhost:8082/api/groups/:groupid/members/:memberid
+    *Get All Organizations: localhost:8082/api/organizations
 
-Post Endpoints
--Add a Horse to a Race: localhost:8082/api/groups/:id/members
--Add a Race: localhost:8082/api/groups
+*Post Endpoints
+    *Add a Horse to a Race: localhost:8082/api/groups/:id/members
+    *Add a Race: localhost:8082/api/groups
 
-Put Endpoints
--Edit a Race: localhost:8082/api/groups
--Edit a Horse in a Race: localhost:8082/api/groups/:id/members
+*Put Endpoints
+    *Edit a Race: localhost:8082/api/groups
+    *Edit a Horse in a Race: localhost:8082/api/groups/:id/members
 
-Delete Endpoints
--Delete a Horse in a Race: localhost:8082/api/groups/:groupid/members/:memberid
--Delete a Race: localhost:8082/api/groups/:id
+*Delete Endpoints
+    *Delete a Horse in a Race: localhost:8082/api/groups/:groupid/members/:memberid
+    *Delete a Race: localhost:8082/api/groups/:id
 
 ## TODO
-Implement user roles and login methods
-Combine horse edit/horse add, race edit/race add
-Change add/edit methods to modal rather than entirely new page
-Add route guards to prevent users from getting to add/edit screens without going through proper channels
-Add more CSS (implement primeng?)
-Clean up unsubscribe methods
+*Implement user roles and login methods
+*Combine horse edit/horse add, race edit/race add
+*Change add/edit methods to modal rather than entirely new page
+*Add route guards to prevent users from getting to add/edit screens without going through proper channels
+*Add more CSS (implement primeng?)
+*Clean up unsubscribe methods
 
