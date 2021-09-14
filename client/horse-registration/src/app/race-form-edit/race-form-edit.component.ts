@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Race } from '../models/race';
 import { Track } from '../models/track';
@@ -13,12 +14,8 @@ import { TracksService } from '../services/tracks.service';
 })
 export class RaceFormEditComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private racesService: RacesService, private tracksService: TracksService) { 
-    window.addEventListener("beforeunload", (event) => {
-      event.preventDefault();
-      event.returnValue="Unsaved modifications";
-      return event;
-    });
+  constructor(private formBuilder: FormBuilder,private racesService: RacesService, private tracksService: TracksService, private router: Router) { 
+    window.addEventListener("beforeunload", this.askBeforeLeavingPage);
   }
 
   raceForm: FormGroup;
@@ -28,9 +25,6 @@ export class RaceFormEditComponent implements OnInit {
   raceServiceSubscription: Subscription;
 
   ngOnInit(): void {
-    // this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
-    //   this.track = track;
-    // });
     if(localStorage.getItem('track')) {
       this.track = JSON.parse(localStorage.getItem('track'));
       this.raceServiceSubscription = this.racesService.currentData.subscribe(race => {
@@ -46,10 +40,17 @@ export class RaceFormEditComponent implements OnInit {
 
   }
 
+  askBeforeLeavingPage(event) {
+    event.preventDefault();
+    event.returnValue="Unsaved modifications";
+    return event;
+  }
+
   onSubmit(race: Race): void {
     race.TrackName = this.track.TrackName;
     race.RaceId = this.race.RaceId;
-    this.racesService.editRace(race).subscribe();
+    window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
+    this.racesService.editRace(race).subscribe(race => this.router.navigateByUrl('/races'));
   }
 
 }

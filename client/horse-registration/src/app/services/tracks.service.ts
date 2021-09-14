@@ -23,12 +23,10 @@ export class TracksService {
 
   getTracks(): Observable<Track> {
     const results: Observable<Track> = this.http.get<Track>(this.trackApiUrl);
-    console.log(`returned ${results}`);
     return results;
   }
 
   sendSelectedTrack(data): void {
-    console.log(data);
     this.data.next(data);
   }
 

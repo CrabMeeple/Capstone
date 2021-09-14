@@ -23,12 +23,10 @@ export class RacesService {
 
   getRaces() : Observable<Race> {
     const results : Observable<Race> = this.http.get<Race>(this.raceApiUrl);
-    console.log(`returned ${results}`);
     return results; 
   }
 
   sendSelectedRace(data): void {
-    console.log(data);
     this.data.next(data);
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Member } from '../models/member';
 import { Race } from '../models/race';
@@ -14,12 +15,8 @@ import { colorMap } from '../shared/global';
 })
 export class HorseFormEditComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private horsesService: HorsesService, private racesService: RacesService) {
-    window.addEventListener("beforeunload", (event) => {
-      event.preventDefault();
-      event.returnValue="Unsaved modifications";
-      return event;
-    });
+  constructor(private formBuilder: FormBuilder, private horsesService: HorsesService, private racesService: RacesService, private router: Router) {
+    window.addEventListener("beforeunload", this.askBeforeLeavingPage);
    }
 
   horseForm: FormGroup;
@@ -53,12 +50,18 @@ export class HorseFormEditComponent implements OnInit {
   ngOnDestroy(): void {
     this.raceServiceSubscription.unsubscribe();
     this.horseServiceSubscription.unsubscribe();
+    window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
+  }
+
+  askBeforeLeavingPage(event) {
+    event.preventDefault();
+    event.returnValue="Unsaved modifications";
+    return event;
   }
 
   onSubmit(horse: Member): void {
-    console.log(horse);
     horse.MemberId = this.editHorse.MemberId;
-    this.horsesService.editHorse(this.selectedRace.RaceId, horse).subscribe();
+    this.horsesService.editHorse(this.selectedRace.RaceId, horse).subscribe(race => this.router.navigateByUrl('/races'));
   }
 
 }

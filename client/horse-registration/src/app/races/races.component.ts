@@ -26,30 +26,12 @@ export class RacesComponent implements OnInit, OnDestroy {
   viewAll: boolean = true;
   trackServiceSubscription: Subscription;
   race: Race;
-  mappedColor; 
-  colorMap = colorMap;
-  
-
-  name = 'Angular 4';
-  display: boolean;
- 
-  close() { 
-    console.log('calling on close');
-  }
 
   ngOnInit(): void {
     if(localStorage.getItem('track')) {
       this.currentTrack = JSON.parse(localStorage.getItem('track'));
       this.getRaces(this.currentTrack.TrackId);
-      this.mappedColor = Object.entries(colorMap).slice(0 ,this.selectedRace.MaxGroupSize);
     }
-    // this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
-    //   this.currentTrack = track;
-    //   console.log('current Track');
-    //   console.log(this.currentTrack);
-    //   this.getRaces(this.currentTrack.TrackId);
-    // });
-    this.mappedColor = Object.entries(colorMap).slice(0 ,this.selectedRace.MaxGroupSize);
   }
 
   getRaces(trackId : string): void {
@@ -71,7 +53,6 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    //this.trackServiceSubscription.unsubscribe();
   }
 
   deleteHorse(groupId: number, horseId: number) {
@@ -84,10 +65,6 @@ export class RacesComponent implements OnInit, OnDestroy {
     this.racesService.sendSelectedRace(race);
   }
 
-  addRace() {
-    //this.tracksService.sendSelectedTrack(this.currentTrack);
-  }
-
   deleteRace() {
     this.racesService.deleteRace(this.selectedRace.RaceId).subscribe(goal => { this.getRaces(this.currentTrack.TrackId); });
     this.allRaces = this.allRaces.filter(obj => obj.RaceId !== this.selectedRace.RaceId);
@@ -95,7 +72,6 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   editRace() {
-    //this.tracksService.sendSelectedTrack(this.currentTrack);
     this.racesService.sendSelectedRace(this.selectedRace);
   }
 }

@@ -24,15 +24,12 @@ export class TracksComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    console.log("Destruction");
     this.trackSubscription.unsubscribe();
   }
 
   getTracks() {
     this.trackSubscription = this.tracksService.getTracks().subscribe((tracks:any) => {
       this.allTracks = tracks;
-      console.log('All tracks');
-      console.log(this.allTracks);
       for(let track of this.allTracks) {
         switch(track.TrackId) {
           case "Oak":
@@ -46,8 +43,6 @@ export class TracksComponent implements OnInit {
             break;
         }
       }
-
-      console.log(this.turfway);
     },
     err => {
       this.errorMessage = err;

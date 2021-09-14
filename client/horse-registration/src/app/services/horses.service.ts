@@ -36,7 +36,6 @@ export class HorsesService {
   }
 
   sendSelectedHorse(data): void {
-    console.log(data);
     this.data.next(data);
   }
 
