@@ -15,7 +15,7 @@ import { TracksService } from '../services/tracks.service';
 export class RaceFormEditComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private racesService: RacesService, private tracksService: TracksService, private router: Router) { 
-    window.addEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.addEventListener("beforeunload", this.askBeforeLeavingPage);
   }
 
   raceForm: FormGroup;
@@ -40,16 +40,16 @@ export class RaceFormEditComponent implements OnInit {
 
   }
 
-  askBeforeLeavingPage(event) {
-    event.preventDefault();
-    event.returnValue="Unsaved modifications";
-    return event;
-  }
+  // askBeforeLeavingPage(event) {
+  //   event.preventDefault();
+  //   event.returnValue="Unsaved modifications";
+  //   return event;
+  // }
 
   onSubmit(race: Race): void {
     race.TrackName = this.track.TrackName;
     race.RaceId = this.race.RaceId;
-    window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
     this.racesService.editRace(race).subscribe(race => this.router.navigateByUrl('/races'));
   }
 

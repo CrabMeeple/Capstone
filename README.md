@@ -40,4 +40,6 @@ Navigate to http://localhost:4200
 * Add route guards to prevent users from getting to add/edit screens without going through proper channels
 * Add more CSS (implement primeng?)
 * Clean up unsubscribe methods
-
+* Add Race Number to back end
+* Have validators working
+* Race select box blank on load of page

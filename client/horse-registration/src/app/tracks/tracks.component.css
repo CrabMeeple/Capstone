@@ -1,13 +1,18 @@
-main {
+/* main {
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-evenly;
+} */
+.figure-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 @media(max-width: 950px) {
-    main {
+    .figure-layout {
         flex-direction: column;
         flex: 1;
     }
@@ -23,4 +28,11 @@ main {
 .Site-content {
     flex: 1;
 }
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 

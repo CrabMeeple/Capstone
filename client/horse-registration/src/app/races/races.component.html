@@ -1,3 +1,4 @@
+<h1>{{currentTrack.TrackName}} Races</h1>
 <select  name="races" id="races"  [(ngModel)]="selectedRace" (change)="isViewAll($event.target.value)">
     <option value="ViewAll">View All</option>
     <option *ngFor="let race of allRaces" [ngValue]="race" value="Race{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
@@ -49,7 +50,7 @@
 </div>
 <div *ngIf="this.viewAll">
     <div *ngFor="let race of allRaces">
-        <h1>Race {{ race.RaceId }}</h1>
+        <h2>Race {{ race.RaceId }}</h2>
         <table>
             <tr>
                 <th>Horse Color</th>

@@ -1,22 +1,27 @@
 <main class="Site-content">
-    <figure>
-      <a routerLink="races" (click)="navigateToRaces(this.oaklawn)">
-         <img src="assets/images/Oaklawn.jpg" width="300" height="200" alt="Oaklawn" class="picture-link">
-      </a>
-       <figcaption>{{this.oaklawn?.TrackName}}</figcaption>
-    </figure>
-    <figure>
-      <a routerLink="races" (click)="navigateToRaces(this.turfway)">
-         <img src="assets/images/Turfway Park.jpg" width="300" height="200" alt="Turfway" class="picture-link">
-      </a>
-       <figcaption>{{this.turfway?.TrackName}}</figcaption>
-    </figure>
-    <figure>
-      <a routerLink="races" (click)="navigateToRaces(this.delMar)">
-         <img src="assets/images/Del Mar.jpg" width="300" height="200" alt="Del Mar" class="picture-link">
-      </a>
-      <figcaption>{{this.delMar?.TrackName}}</figcaption>
-   </figure>
+   <div class="main-layout">
+      <div class="figure-layout">
+         <figure>
+            <a routerLink="races" (click)="navigateToRaces(this.oaklawn)">
+               <img src="assets/images/Oaklawn.jpg" width="300" height="200" alt="Oaklawn" class="picture-link">
+            </a>
+            <figcaption>{{this.oaklawn?.TrackName}}</figcaption>
+         </figure>
+         <figure>
+            <a routerLink="races" (click)="navigateToRaces(this.turfway)">
+               <img src="assets/images/Turfway Park.jpg" width="300" height="200" alt="Turfway" class="picture-link">
+            </a>
+            <figcaption>{{this.turfway?.TrackName}}</figcaption>
+         </figure>
+         <figure>
+            <a routerLink="races" (click)="navigateToRaces(this.delMar)">
+               <img src="assets/images/Del Mar.jpg" width="300" height="200" alt="Del Mar" class="picture-link">
+            </a>
+            <figcaption>{{this.delMar?.TrackName}}</figcaption>
+         </figure>
+      </div>
+      <p>Welcome to the Horse Registration site. Here you can easily add, edit, or delete both horses and races at any of our tracks. Click on any of the images above to get started.</p>
+   </div>
    
   
 </main>

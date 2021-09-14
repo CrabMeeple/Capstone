@@ -40,7 +40,7 @@ export class HorseFormComponent implements OnInit, OnDestroy {
       this.selectedRace = race;
       this.mappedColor = Object.entries(colorMap).slice(0 ,this.selectedRace.MaxGroupSize);
     });
-    window.addEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.addEventListener("beforeunload", this.askBeforeLeavingPage);
   }
 
   ngOnDestroy(): void {
@@ -49,14 +49,14 @@ export class HorseFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(horse: Member): void {
-    window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
     this.horsesService.addHorse(this.selectedRace.RaceId, horse).subscribe(race => this.router.navigateByUrl('/races'));
   }
 
-  askBeforeLeavingPage(event) {
-    event.preventDefault();
-    event.returnValue="Unsaved modifications";
-    return event;
-  }
+  // askBeforeLeavingPage(event) {
+  //   event.preventDefault();
+  //   event.returnValue="Unsaved modifications";
+  //   return event;
+  // }
 
 }

@@ -16,7 +16,7 @@ import { colorMap } from '../shared/global';
 export class HorseFormEditComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private horsesService: HorsesService, private racesService: RacesService, private router: Router) {
-    window.addEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.addEventListener("beforeunload", this.askBeforeLeavingPage);
    }
 
   horseForm: FormGroup;
@@ -50,14 +50,14 @@ export class HorseFormEditComponent implements OnInit {
   ngOnDestroy(): void {
     this.raceServiceSubscription.unsubscribe();
     this.horseServiceSubscription.unsubscribe();
-    window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
   }
 
-  askBeforeLeavingPage(event) {
-    event.preventDefault();
-    event.returnValue="Unsaved modifications";
-    return event;
-  }
+  // askBeforeLeavingPage(event) {
+  //   event.preventDefault();
+  //   event.returnValue="Unsaved modifications";
+  //   return event;
+  // }
 
   onSubmit(horse: Member): void {
     horse.MemberId = this.editHorse.MemberId;

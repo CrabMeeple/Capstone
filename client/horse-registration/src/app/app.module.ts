@@ -15,6 +15,7 @@ import { HorseFormComponent } from './horse-form/horse-form.component';
 import { RaceFormComponent } from './race-form/race-form.component';
 import { HorseFormEditComponent } from './horse-form-edit/horse-form-edit.component';
 import { RaceFormEditComponent } from './race-form-edit/race-form-edit.component';
+import { NavComponent } from './nav/nav.component';
 
 
 
@@ -30,7 +31,8 @@ import { RaceFormEditComponent } from './race-form-edit/race-form-edit.component
     HorseFormComponent,
     RaceFormComponent,
     HorseFormEditComponent,
-    RaceFormEditComponent
+    RaceFormEditComponent,
+    NavComponent
   ],
   imports: [
     CommonModule,

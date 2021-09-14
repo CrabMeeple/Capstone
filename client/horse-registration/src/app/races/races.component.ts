@@ -6,7 +6,6 @@ import { Track } from '../models/track';
 import { HorsesService } from '../services/horses.service';
 import { RacesService } from '../services/races.service';
 import { TracksService } from '../services/tracks.service';
-import { colorMap } from '../shared/global';
 
 @Component({
   selector: 'hr-races',

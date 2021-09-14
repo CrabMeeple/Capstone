@@ -21,7 +21,7 @@ export class RaceFormComponent implements OnInit {
       'SponsorEmail' : [null, [Validators.required]],
       'MaxGroupSize' : [null, [Validators.required, Validators.max(20), Validators.min(1)]]
     });
-    window.addEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.addEventListener("beforeunload", this.askBeforeLeavingPage);
   }
 
   raceForm: FormGroup;
@@ -35,14 +35,14 @@ export class RaceFormComponent implements OnInit {
   }
 
   onSubmit(race: Race): void {
-    window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
+    // window.removeEventListener("beforeunload", this.askBeforeLeavingPage);
     race.TrackName = this.track.TrackName;
     this.racesService.addRace(race).subscribe(race => this.router.navigateByUrl('/races'));
   }
 
-  askBeforeLeavingPage(event) {
-    event.preventDefault();
-    event.returnValue="Unsaved modifications";
-    return event;
-  }
+  // askBeforeLeavingPage(event) {
+  //   event.preventDefault();
+  //   event.returnValue="Unsaved modifications";
+  //   return event;
+  // }
 }

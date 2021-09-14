@@ -1,4 +1,4 @@
-<form [formGroup]="raceForm" (ngSubmit)="onSubmit(raceForm.value)">
+<form [formGroup]="raceForm" (ngSubmit)="onSubmit(raceForm.value)" class="verticalForm">
     <label for="SponsorName">Sponsor Name</label>
     <input type="text" id="sponsorName" formControlName="SponsorName">
     <label for="SponsorPhone">Sponsor Phone</label>
@@ -7,5 +7,6 @@
     <input type="text" id="sponsorEmail" formControlName="SponsorEmail">
     <label for="MaxGroupSize">Max Entrants</label>
     <input type="number" min="1" max="20" formControlName="MaxGroupSize">
+    <input type="button" id="cancel-register-race" value="Cancel" routerLink='/races'>
     <input type="submit" id="register-race" value="Save Race">
 </form>
