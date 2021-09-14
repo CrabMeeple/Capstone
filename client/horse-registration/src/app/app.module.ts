@@ -13,6 +13,11 @@ import { TracksComponent } from './tracks/tracks.component';
 import { RacesComponent } from './races/races.component';
 import { HorseFormComponent } from './horse-form/horse-form.component';
 import { RaceFormComponent } from './race-form/race-form.component';
+import { DialogModule, SelectButtonModule } from 'primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HorseFormEditComponent } from './horse-form-edit/horse-form-edit.component';
+
+
 
 
 @NgModule({
@@ -24,7 +29,8 @@ import { RaceFormComponent } from './race-form/race-form.component';
     TracksComponent,
     RacesComponent,
     HorseFormComponent,
-    RaceFormComponent
+    RaceFormComponent,
+    HorseFormEditComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +38,10 @@ import { RaceFormComponent } from './race-form/race-form.component';
     AppRoutingModule,
     HttpClientModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DialogModule,
+    BrowserAnimationsModule,
+    SelectButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -41,4 +41,14 @@ export class RacesService {
     return results;
   }
 
+  addRace(race: Race): Observable<Race> {
+    const results: Observable<Race> = this.http.post<Race>(this.raceApiUrl, race, this.jsonContentTypeHeaders);
+    return results;
+  }
+
+  deleteRace(raceId: number): Observable<Race> {
+    const results: Observable<Race> = this.http.delete<Race>(`${this.raceApiUrl}/${raceId}`);
+    return results;
+  }
+
 }

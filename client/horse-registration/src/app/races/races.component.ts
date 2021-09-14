@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Member } from '../models/member';
 import { Race } from '../models/race';
 import { Track } from '../models/track';
 import { HorsesService } from '../services/horses.service';
 import { RacesService } from '../services/races.service';
 import { TracksService } from '../services/tracks.service';
+import { colorMap } from '../shared/global';
 
 @Component({
   selector: 'hr-races',
@@ -23,6 +25,15 @@ export class RacesComponent implements OnInit, OnDestroy {
   viewAll: boolean = true;
   trackServiceSubscription: Subscription;
   race: Race;
+  mappedColor; 
+  
+
+  name = 'Angular 4';
+  display: boolean;
+ 
+  close() { 
+    console.log('calling on close');
+  }
 
   ngOnInit(): void {
    // this.getRaces();
@@ -32,16 +43,10 @@ export class RacesComponent implements OnInit, OnDestroy {
       console.log(this.currentTrack);
       this.getRaces(this.currentTrack.TrackId);
     });
+    this.mappedColor = Object.entries(colorMap).slice(0 ,this.selectedRace.MaxGroupSize);
   }
 
   getRaces(trackId : string): void {
-    // this.racesService.getRaces().subscribe((races:any) => {
-    //   this.allRaces = races;
-    //   this.allRaces.sort((a,b) => a.RaceId - b.RaceId);
-    // },
-    // err => {
-    //   this.errorMessage = err;
-    // });
     this.racesService.getRacesByTrack(trackId).subscribe((races:any) => {
       this.allRaces = races;
       this.allRaces.sort((a,b) => a.RaceId - b.RaceId);
@@ -70,13 +75,22 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   deleteHorse(groupId: number, horseId: number) {
-    //this.horsesServices.deleteHorse(groupId, horseId).subscribe(horse => this.getRaces(this.currentTrack.TrackId));
     this.horsesServices.deleteHorse(groupId, horseId).subscribe();
     this.selectedRace.Members = this.selectedRace.Members.filter(obj => obj.MemberId !== horseId);
-    this.setRace();
   }
 
-  setRace() {
-    this.selectedRace = this.allRaces[0];
+  editHorse(race: Race, horse: Member) {
+    this.horsesServices.sendSelectedHorse(horse);
+    this.racesService.sendSelectedRace(race);
+  }
+
+  addRace() {
+    this.tracksService.sendSelectedTrack(this.currentTrack);
+  }
+
+  deleteRace() {
+    this.racesService.deleteRace(this.selectedRace.RaceId).subscribe(goal => { this.getRaces(this.currentTrack.TrackId); });
+    this.allRaces = this.allRaces.filter(obj => obj.RaceId !== this.selectedRace.RaceId);
+    this.viewAll = true;
   }
 }

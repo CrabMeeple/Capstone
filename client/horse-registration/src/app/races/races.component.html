@@ -2,9 +2,9 @@
     <option value="ViewAll">View All</option>
     <option *ngFor="let race of allRaces" [ngValue]="race" value="Race{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
 </select>
-<!-- <a routerLink="addEntrant" (click)="addRace(this.)">
+<a routerLink="addRace" (click)="addRace()">
     <input type="button" value="Add Race">
-</a> -->
+</a>
 <div *ngIf="!this.viewAll">
     <table>
         <tr>
@@ -23,11 +23,16 @@
             <td>{{ horse.MemberPhone }}</td>
             <td>{{ horse.MemberEmail }}</td>
             <td>
-                <button>Edit</button>
+                <!-- <button type="text" (click)="display = !display" pButton icon="fa-external-link-square" label="Show">Edit</button> -->
+                <input routerLink="editEntrant" type="button" (click)="editHorse(this.selectedRace, this.horse)" value="Edit">
             </td>
             <td>
                 <input type="button" (click)="deleteHorse(this.selectedRace.RaceId, this.horse.MemberId)" value="Delete">
             </td>
+            <!-- <p-dialog header="Title" [(visible)]="display"  (onHide)="close()">
+                <input type="text" pInputText value="{{ horse.HorseName }}">
+                <p-selectButton [options]="mappedColor" ></p-selectButton>
+            </p-dialog> -->
         </tr>
     </table>
     <a routerLink="addEntrant" (click)="addHorse(this.selectedRace)">
@@ -38,5 +43,5 @@
     <p>Sponsor Email: {{this.selectedRace.SponsorEmail}}</p>
     <p>Sponsor Phone: {{this.selectedRace.SponsorPhone}}</p>
     <button>Edit</button>
-    <button>Delete Race</button>
+    <input type="button" (click)="deleteRace()" value="Delete Race">
 </div>
