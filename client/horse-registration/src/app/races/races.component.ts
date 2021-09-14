@@ -16,7 +16,8 @@ import { colorMap } from '../shared/global';
 })
 export class RacesComponent implements OnInit, OnDestroy {
 
-  constructor(private racesService: RacesService, private tracksService: TracksService, private horsesServices: HorsesService) { }
+  constructor(private racesService: RacesService, private tracksService: TracksService, private horsesServices: HorsesService) { 
+  }
 
   currentTrack: Track;
   errorMessage: string;
@@ -37,13 +38,17 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-   // this.getRaces();
-    this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
-      this.currentTrack = track;
-      console.log('current Track');
-      console.log(this.currentTrack);
+    if(localStorage.getItem('track')) {
+      this.currentTrack = JSON.parse(localStorage.getItem('track'));
       this.getRaces(this.currentTrack.TrackId);
-    });
+      this.mappedColor = Object.entries(colorMap).slice(0 ,this.selectedRace.MaxGroupSize);
+    }
+    // this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
+    //   this.currentTrack = track;
+    //   console.log('current Track');
+    //   console.log(this.currentTrack);
+    //   this.getRaces(this.currentTrack.TrackId);
+    // });
     this.mappedColor = Object.entries(colorMap).slice(0 ,this.selectedRace.MaxGroupSize);
   }
 
@@ -66,7 +71,7 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.trackServiceSubscription.unsubscribe();
+    //this.trackServiceSubscription.unsubscribe();
   }
 
   deleteHorse(groupId: number, horseId: number) {
@@ -80,7 +85,7 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   addRace() {
-    this.tracksService.sendSelectedTrack(this.currentTrack);
+    //this.tracksService.sendSelectedTrack(this.currentTrack);
   }
 
   deleteRace() {
@@ -90,7 +95,7 @@ export class RacesComponent implements OnInit, OnDestroy {
   }
 
   editRace() {
-    this.tracksService.sendSelectedTrack(this.currentTrack);
+    //this.tracksService.sendSelectedTrack(this.currentTrack);
     this.racesService.sendSelectedRace(this.selectedRace);
   }
 }

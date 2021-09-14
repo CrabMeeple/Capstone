@@ -24,6 +24,11 @@ export class HorseFormComponent implements OnInit, OnDestroy {
       'MemberEmail' : [null, [Validators.required]],
       'MemberPhone' : [null, [Validators.required]]
     });
+    window.addEventListener("beforeunload", (event) => {
+      event.preventDefault();
+      event.returnValue="Unsaved modifications";
+      return event;
+    });
    }
 
   horseForm: FormGroup;
@@ -52,6 +57,7 @@ export class HorseFormComponent implements OnInit, OnDestroy {
   onSubmit(horse: Member): void {
     console.log(horse);
     this.horsesService.addHorse(this.selectedRace.RaceId, horse).subscribe();
+    this
   }
 
 }

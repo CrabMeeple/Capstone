@@ -15,6 +15,11 @@ import { colorMap } from '../shared/global';
 export class HorseFormEditComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private horsesService: HorsesService, private racesService: RacesService) {
+    window.addEventListener("beforeunload", (event) => {
+      event.preventDefault();
+      event.returnValue="Unsaved modifications";
+      return event;
+    });
    }
 
   horseForm: FormGroup;

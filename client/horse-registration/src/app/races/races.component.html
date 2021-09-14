@@ -2,7 +2,7 @@
     <option value="ViewAll">View All</option>
     <option *ngFor="let race of allRaces" [ngValue]="race" value="Race{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
 </select>
-<a routerLink="addRace" (click)="addRace()">
+<a routerLink="addRace">
     <input type="button" value="Add Race">
 </a>
 <div *ngIf="!this.viewAll">

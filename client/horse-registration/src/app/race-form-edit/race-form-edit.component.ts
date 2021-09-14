@@ -14,6 +14,11 @@ import { TracksService } from '../services/tracks.service';
 export class RaceFormEditComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private racesService: RacesService, private tracksService: TracksService) { 
+    window.addEventListener("beforeunload", (event) => {
+      event.preventDefault();
+      event.returnValue="Unsaved modifications";
+      return event;
+    });
   }
 
   raceForm: FormGroup;
@@ -23,18 +28,21 @@ export class RaceFormEditComponent implements OnInit {
   raceServiceSubscription: Subscription;
 
   ngOnInit(): void {
-    this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
-      this.track = track;
-    });
-    this.raceServiceSubscription = this.racesService.currentData.subscribe(race => {
-      this.race = race;
-    })
-    this.raceForm = this.formBuilder.group({
-      'SponsorName' : [this.race?.SponsorName, [Validators.required]],
-      'SponsorPhone' : [this.race?.SponsorPhone, [Validators.required]],
-      'SponsorEmail' : [this.race?.SponsorEmail, [Validators.required]],
-      'MaxGroupSize' : [this.race?.MaxGroupSize, [Validators.required, Validators.max(20), Validators.min(1)]]
-    });
+    // this.trackServiceSubscription = this.tracksService.currentData.subscribe(track => {
+    //   this.track = track;
+    // });
+    if(localStorage.getItem('track')) {
+      this.track = JSON.parse(localStorage.getItem('track'));
+      this.raceServiceSubscription = this.racesService.currentData.subscribe(race => {
+        this.race = race;
+      })
+      this.raceForm = this.formBuilder.group({
+        'SponsorName' : [this.race?.SponsorName, [Validators.required]],
+        'SponsorPhone' : [this.race?.SponsorPhone, [Validators.required]],
+        'SponsorEmail' : [this.race?.SponsorEmail, [Validators.required]],
+        'MaxGroupSize' : [this.race?.MaxGroupSize, [Validators.required, Validators.max(20), Validators.min(1)]]
+      });
+    }
 
   }
 

@@ -55,7 +55,8 @@ export class TracksComponent implements OnInit {
   }
 
   navigateToRaces(track: Track) {
-    this.tracksService.sendSelectedTrack(track);
+    localStorage.setItem('track', JSON.stringify(track));
+    //this.tracksService.sendSelectedTrack(track);
   }
 
 }
