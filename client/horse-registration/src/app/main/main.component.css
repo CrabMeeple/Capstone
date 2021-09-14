@@ -1,15 +1,6 @@
-main {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
 @media(max-width: 950px) {
     main {
         flex-direction: column;
-        flex: 1;
     }
 }
 
@@ -18,9 +9,5 @@ main {
     height:150px;
     border-radius:50%;
     overflow:hidden;
-}
-
-.Site-content {
-    flex: 1;
 }
 
