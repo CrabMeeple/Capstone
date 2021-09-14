@@ -1,1 +1,48 @@
-[{"RaceId":1,"TrackName":"Oaklawn","SponsorName":"Natalie Rachelle","SponsorPhone":"555-000-0000","SponsorEmail":"nat214@gmail.com","MaxGroupSize":6,"Members":[]},{"RaceId":3,"TrackName":"Turfway Park","SponsorName":"Natalie Rachelle3","SponsorPhone":"555-000-00003","SponsorEmail":"nat214@gmail.com","MaxGroupSize":11,"Members":[{"MemberId":19,"MemberEmail":"ty@cl.com","HorseName":"Horse Name","JockeyName":"Test Tockey","Odds":"7-2","HorseColor":"Yellow","MemberPhone":"2222222222"}]},{"RaceId":2,"TrackName":"Del Mar","SponsorName":"Natalie Rachelle2","SponsorPhone":"555-000-0000","SponsorEmail":"nat214@gmail.com","MaxGroupSize":10,"Members":[]}]
+[
+    {
+        "RaceId": 1,
+        "TrackName": "Oaklawn",
+        "SponsorName": "Natalie Rachelle",
+        "SponsorPhone": "555-000-0000",
+        "SponsorEmail": "nat214@gmail.com",
+        "MaxGroupSize": 6,
+        "Members": []
+    },
+    {
+        "RaceId": 3,
+        "TrackName": "Turfway Park",
+        "SponsorName": "Natalie Rachelle5",
+        "SponsorPhone": "555-000",
+        "SponsorEmail": "nat214@gmail.comfas",
+        "MaxGroupSize": 13,
+        "Members": [
+            {
+                "MemberId": 19,
+                "MemberEmail": "ty@cl.com",
+                "HorseName": "Horse Name",
+                "JockeyName": "Test Tockey",
+                "Odds": "7-2",
+                "HorseColor": "Yellow",
+                "MemberPhone": "2222222222"
+            }
+        ]
+    },
+    {
+        "RaceId": 2,
+        "TrackName": "Del Mar",
+        "SponsorName": "Natalie Rachelle2",
+        "SponsorPhone": "555-000-0000",
+        "SponsorEmail": "nat214@gmail.com",
+        "MaxGroupSize": 10,
+        "Members": []
+    },
+    {
+        "RaceId": 10,
+        "TrackName": "Turfway Park",
+        "SponsorEmail": "h@h.com",
+        "SponsorName": "TJ",
+        "SponsorPhone": "3241432",
+        "MaxGroupSize": 15,
+        "Members": []
+    }
+]

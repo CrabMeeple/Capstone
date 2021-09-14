@@ -51,4 +51,9 @@ export class RacesService {
     return results;
   }
 
+  editRace(race: Race): Observable<Race> {
+    const results: Observable<Race> = this.http.put<Race>(this.raceApiUrl, race, this.jsonContentTypeHeaders);
+    return results;
+  }
+
 }

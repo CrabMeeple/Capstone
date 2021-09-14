@@ -16,6 +16,7 @@ import { RaceFormComponent } from './race-form/race-form.component';
 import { DialogModule, SelectButtonModule } from 'primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HorseFormEditComponent } from './horse-form-edit/horse-form-edit.component';
+import { RaceFormEditComponent } from './race-form-edit/race-form-edit.component';
 
 
 
@@ -30,7 +31,8 @@ import { HorseFormEditComponent } from './horse-form-edit/horse-form-edit.compon
     RacesComponent,
     HorseFormComponent,
     RaceFormComponent,
-    HorseFormEditComponent
+    HorseFormEditComponent,
+    RaceFormEditComponent
   ],
   imports: [
     CommonModule,

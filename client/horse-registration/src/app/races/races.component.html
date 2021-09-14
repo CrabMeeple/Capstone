@@ -1,4 +1,4 @@
-<select  name="races" id="races" [(ngModel)]="selectedRace" (change)="isViewAll($event.target.value)">
+<select  name="races" id="races"  [(ngModel)]="selectedRace" (change)="isViewAll($event.target.value)">
     <option value="ViewAll">View All</option>
     <option *ngFor="let race of allRaces" [ngValue]="race" value="Race{{this.race.RaceId}}">Race {{this.race.RaceId}}</option>
 </select>
@@ -8,7 +8,7 @@
 <div *ngIf="!this.viewAll">
     <table>
         <tr>
-            <th>Horse Number</th>
+            <th>Horse Color</th>
             <th>Horse Name</th>
             <th>Odds</th>
             <th>Jockey Name</th>
@@ -42,6 +42,40 @@
     <p>Sponsor Name: {{this.selectedRace.SponsorName}}</p>
     <p>Sponsor Email: {{this.selectedRace.SponsorEmail}}</p>
     <p>Sponsor Phone: {{this.selectedRace.SponsorPhone}}</p>
-    <button>Edit</button>
+    <a routerLink="editRace" (click)="editRace()">
+        <input type="button" value="Edit Race">
+    </a>
     <input type="button" (click)="deleteRace()" value="Delete Race">
+</div>
+<div *ngIf="this.viewAll">
+    <div *ngFor="let race of allRaces">
+        <h1>Race {{ race.RaceId }}</h1>
+        <table>
+            <tr>
+                <th>Horse Color</th>
+                <th>Horse Name</th>
+                <th>Odds</th>
+                <th>Jockey Name</th>
+                <th>Contact Phone</th>
+                <th>Contact Email</th>
+            </tr>
+            <tr *ngFor="let horse of race.Members">
+                <td>{{ horse.HorseColor }}</td>
+                <td>{{ horse.HorseName }}</td>
+                <td>{{ horse.Odds }}</td>
+                <td>{{ horse.JockeyName }}</td>
+                <td>{{ horse.MemberPhone }}</td>
+                <td>{{ horse.MemberEmail }}</td>
+                <td>
+                <!-- <p-dialog header="Title" [(visible)]="display"  (onHide)="close()">
+                    <input type="text" pInputText value="{{ horse.HorseName }}">
+                    <p-selectButton [options]="mappedColor" ></p-selectButton>
+                </p-dialog> -->
+            </tr>
+        </table>
+        <p>Max Entrants: {{race.MaxGroupSize}}</p>
+        <p>Sponsor Name: {{race.SponsorName}}</p>
+        <p>Sponsor Email: {{race.SponsorEmail}}</p>
+        <p>Sponsor Phone: {{race.SponsorPhone}}</p>
+    </div>
 </div>

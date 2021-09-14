@@ -26,6 +26,7 @@ export class RacesComponent implements OnInit, OnDestroy {
   trackServiceSubscription: Subscription;
   race: Race;
   mappedColor; 
+  colorMap = colorMap;
   
 
   name = 'Angular 4';
@@ -56,14 +57,8 @@ export class RacesComponent implements OnInit, OnDestroy {
     });
   }
 
-  viewAllRaces(): void {
-    console.log("View All");
-    this.viewAll = true;
-  }
-
   isViewAll(value) {
     this.viewAll = ("ViewAll" === value);
-    console.log(this.viewAll);
   }
 
   addHorse(race: Race) {
@@ -92,5 +87,10 @@ export class RacesComponent implements OnInit, OnDestroy {
     this.racesService.deleteRace(this.selectedRace.RaceId).subscribe(goal => { this.getRaces(this.currentTrack.TrackId); });
     this.allRaces = this.allRaces.filter(obj => obj.RaceId !== this.selectedRace.RaceId);
     this.viewAll = true;
+  }
+
+  editRace() {
+    this.tracksService.sendSelectedTrack(this.currentTrack);
+    this.racesService.sendSelectedRace(this.selectedRace);
   }
 }
